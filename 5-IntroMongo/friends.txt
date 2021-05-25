@@ -1,0 +1,17 @@
+db.samples_friends.find({ season: 1 }).pretty();
+
+db.samples_friends.find({ airtime: /20:00/ }).pretty();
+
+db.samples_friends.find({ name: /w/ }).pretty();
+
+db.samples_friends.find({ $and: [{ season: 2 }, { number: 1 }] }).pretty();
+
+db.samples_friends
+  .find({ $and: [{ season: 1 }, { number: { $lte: 5 } }] })
+  .pretty();
+
+db.samples_friends.find({ name: /^The One/ }).pretty();
+
+db.samples_friends.find({ name: /Chandler/ }).pretty();
+
+db.samples_friends.find({ $and: [{ season: 3 }, { name: /Ross/ }] }).pretty();

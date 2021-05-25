@@ -1,0 +1,65 @@
+db.samples_pokemon.find({ num: "132" }).pretty();
+
+db.samples_pokemon.find({ type: "Poison" }).pretty();
+
+db.samples_pokemon.find({ avg_spawns: 4.2 }).pretty();
+
+db.samples_pokemon
+  .find({
+    $and: [{ candy_count: { $gte: 20 } }, { candy_count: { $lte: 40 } }],
+  })
+  .pretty();
+
+db.samples_pokemon.find({ spawn_chance: { $gt: 0.088 } }).pretty();
+
+db.samples_pokemon.find({}).limit(10).sort({ weight: -1 }).pretty();
+
+db.samples_pokemon
+  .find({ next_evolution: { $elemMatch: { num: "003" } } })
+  .pretty();
+
+db.samples_pokemon
+  .find({ $and: [{ candy_count: { $gte: 25 } }, { avg_spawns: { $gt: 5 } }] })
+  .pretty();
+
+db.samples_pokemon
+  .find({ $and: [{ weaknesses: "Ground" }, { multipliers: null }] })
+  .pretty();
+
+db.samples_pokemon.find().sort({ avg_spawns: -1 }).pretty();
+
+db.samples_pokemon
+  .find({ candy_count: { $lt: 100 } })
+  .sort({ candy_count: -1 })
+  .pretty();
+
+db.samples_pokemon.find({ egg: /Not in Eggs/ }).pretty();
+
+db.samples_pokemon
+  .find({ $or: [{ candy_count: { $gte: 100 } }, { multipliers: null }] })
+  .pretty();
+
+db.samples_pokemon
+  .find({
+    $and: [
+      { candy_count: { $gt: 25 } },
+      { spawn_time: { $lt: "15" } },
+      { avg_spawns: { $gt: 40 } },
+    ],
+  })
+  .pretty();
+
+db.samples_pokemon
+  .find({ candy_count: { $gt: 50 } })
+  .limit(3)
+  .pretty();
+
+db.samples_pokemon
+  .find({ $and: [{ type: "Ground" }, { weaknesses: { $not: /Grass/ } }] })
+  .pretty();
+
+db.samples_pokemon.find().sort({ candy_count: -1 }).pretty();
+
+db.samples_pokemon.find().sort({ spawn_chance: 1 }).pretty();
+
+db.samples_pokemon.find({ name: /Magikarp/ }).pretty();
